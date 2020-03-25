@@ -1,0 +1,24 @@
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=GMT%2b8:00
+    username: root
+    password: root
+
+  liquibase:
+    enabled: true
+    change-log: classpath:sample_change.sql
+
+mybatis:
+  mapper-locations: classpath*:com/**/mapping/*.xml
+  type-aliases-package: com.**.domain
+  mapper-scan:
+    basePackages: com.**.mapper
+
+logging:
+  level:
+    com.alilitech.mapper: debug
+    liquibase: error
+
+
+
