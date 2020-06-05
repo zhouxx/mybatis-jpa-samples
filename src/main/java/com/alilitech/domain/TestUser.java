@@ -24,25 +24,33 @@ public class TestUser {
 
     private Integer age;
 
+    //代码触发器
     @TriggerValue(triggers = @Trigger(triggerType = SqlCommandType.INSERT, valueType = TriggerValueType.JavaCode, valueClass = DateUtil.class, methodName = "getDate"))
+    //自定义数据库字段
     @Column(name = "createTime")
     private Date createTime;
 
     private String deptNo;
 
+    //ManyToOne演示
     @ManyToOne
     @JoinColumn(name = "deptNo", referencedColumnName = "deptNo")
+    //子查询演示
     @SubQuery(
             predicates = @SubQuery.Predicate(property = "deptNo",condition = "> '0'"),
             orders = @SubQuery.Order(property = "deptNo"))
+    //哪些方法关联演示
     @MappedStatement(exclude = {"findPageSpecification", "findSpecification"})
     private TestDept dept;
 
+    //哪些方法关联演示
     @MappedStatement(include = {"findById"})
+    //ManyToMany演示 可定义中间表，表关联字段
     @ManyToMany
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "id", referencedColumnName = "userId"),
             inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "roleId"))
+    //子查询演示
     @SubQuery(
             predicates = {@SubQuery.Predicate(property = "roleCode",condition = "<> '0'"), @SubQuery.Predicate(property = "roleCode",condition = "> '0'")},
             orders = @SubQuery.Order(property = "roleCode"))
