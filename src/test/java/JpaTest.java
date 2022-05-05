@@ -14,7 +14,7 @@
  *    limitations under the License.
  */
 
-import com.AppStart;
+import com.alilitech.AppStart;
 import com.alilitech.domain.TestDept;
 import com.alilitech.domain.TestUser;
 import com.alilitech.mapper.TestDeptMapper;

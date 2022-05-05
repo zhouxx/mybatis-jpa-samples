@@ -25,7 +25,7 @@ public class TestUser {
     private Integer age;
 
     //代码触发器
-    @TriggerValue(triggers = @Trigger(triggerType = SqlCommandType.INSERT, valueType = TriggerValueType.JavaCode, valueClass = DateUtil.class, methodName = "getDate"))
+    @TriggerValue(triggers = @Trigger(triggerType = SqlCommandType.INSERT, valueType = TriggerValueType.JAVA_CODE, valueClass = DateUtil.class, methodName = "getDate"))
     //自定义数据库字段
     @Column(name = "createTime")
     private Date createTime;
